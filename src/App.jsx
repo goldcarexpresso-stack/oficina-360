@@ -2,55 +2,54 @@ import { useState } from 'react'
 import DeclaracaoRenda from './DeclaracaoRenda'
 
 export default function App() {
-  const [nome, setNome] = useState('Gold car expresso')
-  const [senha, setSenha] = useState('')
-  const [logado, setLogado] = useState(false)
-
-  const handleLogin = () => {
-    // Aqui liberamos o acesso assim que clicar
-    setLogado(true)
-  }
-
-  // Se já estiver logado, mostra o painel/declaração de renda
-  if (logado) {
-    return <DeclaracaoRenda nomeOficinaInicial={nome} />
-  }
+  const [abaAtiva, setAbaAtiva] = useState('declaracao')
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-slate-900 p-8 rounded-2xl border border-slate-800 shadow-2xl">
-        
-        <h1 className="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">
-          OFICINA 360
-        </h1>
-        <p className="text-center text-slate-400 mb-8">Gestão Completa para sua Oficina</p>
-
-        <div className="space-y-4">
-          <input 
-            type="text"
-            placeholder="Nome da Oficina"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 focus:outline-none focus:border-emerald-500"
-          />
-          
-          <input 
-            type="password"
-            placeholder="Senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 focus:outline-none focus:border-emerald-500"
-          />
+    <div className="min-h-screen bg-slate-950 text-white">
+      {/* Barra de Navegação Superior */}
+      <nav className="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 p-4 sticky top-0 z-50">
+        <div className="max-w-4xl mx-auto flex flex-wrap gap-2 justify-center">
+          <button 
+            onClick={() => setAbaAtiva('declaracao')}
+            className={`px-4 py-2 rounded-xl font-bold text-sm transition ${abaAtiva === 'declaracao' ? 'bg-emerald-500 text-white shadow-lg' : 'bg-slate-800 text-slate-400 hover:text-white'}`}
+          >
+            📄 Declaração de Renda
+          </button>
           
           <button 
-            onClick={handleLogin}
-            className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 py-3 rounded-lg font-bold text-lg active:scale-95 transition cursor-pointer"
+            onClick={() => setAbaAtiva('orcamentos')}
+            className={`px-4 py-2 rounded-xl font-bold text-sm transition ${abaAtiva === 'orcamentos' ? 'bg-emerald-500 text-white shadow-lg' : 'bg-slate-800 text-slate-400 hover:text-white'}`}
           >
-            Acessar Sistema
+            🛠️ Orçamentos
+          </button>
+
+          <button 
+            onClick={() => setAbaAtiva('clientes')}
+            className={`px-4 py-2 rounded-xl font-bold text-sm transition ${abaAtiva === 'clientes' ? 'bg-emerald-500 text-white shadow-lg' : 'bg-slate-800 text-slate-400 hover:text-white'}`}
+          >
+            👥 Clientes
           </button>
         </div>
+      </nav>
 
-      </div>
+      {/* Conteúdo Dinâmico da Aba Ativa */}
+      <main className="p-4">
+        {abaAtiva === 'declaracao' && <DeclaracaoRenda />}
+        
+        {abaAtiva === 'orcamentos' && (
+          <div className="max-w-2xl mx-auto bg-slate-900 border border-slate-800 p-8 rounded-3xl mt-6 text-center">
+            <h2 className="text-2xl font-bold text-emerald-400 mb-2">Módulo de Orçamentos</h2>
+            <p className="text-slate-400">Este é o próximo recurso que vamos ativar para o seu atendimento.</p>
+          </div>
+        )}
+
+        {abaAtiva === 'clientes' && (
+          <div className="max-w-2xl mx-auto bg-slate-900 border border-slate-800 p-8 rounded-3xl mt-6 text-center">
+            <h2 className="text-2xl font-bold text-emerald-400 mb-2">Módulo de Clientes</h2>
+            <p className="text-slate-400">Aqui ficará a lista de cadastros salvos no Supabase.</p>
+          </div>
+        )}
+      </main>
     </div>
   )
 }
