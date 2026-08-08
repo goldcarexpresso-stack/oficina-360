@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import DeclaracaoRenda from './DeclaracaoRenda'
 
-function Dashboard() {
+function Dashboard({ setTela }) { // <- ADICIONEI ISSO AQUI
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white p-6 flex-col items-center justify-center">
       <h1 className="text-5xl font-bold mb-2 bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">OFICINA 360</h1>
@@ -40,7 +40,7 @@ export default function App() {
       </nav>
 
       {/* CONTEÚDO */}
-      {tela === 'dashboard' && <Dashboard />}
+      {tela === 'dashboard' && <Dashboard setTela={setTela} />} {/* <- E PASSEI AQUI */}
       {tela === 'declaracao' && <DeclaracaoRenda />}
     </div>
   )
