@@ -13,8 +13,7 @@ export default function DeclaracaoRenda() {
     
     const doc = new jsPDF()
     
-    // CABEÇALHO NÍVEL 2026
-    doc.setFillColor(15, 23, 42) // slate-900
+    doc.setFillColor(15, 23, 42)
     doc.rect(0, 0, 210, 40, 'F')
     doc.setTextColor(255, 255, 255)
     doc.setFontSize(22)
@@ -22,13 +21,11 @@ export default function DeclaracaoRenda() {
     doc.setFontSize(12)
     doc.text('DECLARAÇÃO DE RENDA MENSAL', 105, 30, { align: 'center' })
 
-    // CONTEÚDO
     doc.setTextColor(0, 0, 0)
     doc.setFontSize(11)
     doc.text(`Período: ${mes}/${ano}`, 20, 55)
     doc.text(`Data de Emissão: ${new Date().toLocaleDateString('pt-BR')}`, 20, 62)
     
-    doc.setLineWidth(0.5)
     doc.line(20, 70, 190, 70)
 
     doc.text(`Faturamento Bruto: R$ ${Number(faturamento).toLocaleString('pt-BR', {minimumFractionDigits: 2})}`, 20, 85)
@@ -50,10 +47,10 @@ export default function DeclaracaoRenda() {
         <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">📄 Declaração de Renda</h1>
         <p className="text-slate-400 mb-8">Gere seu PDF oficial em 10 segundos</p>
 
-        <div className="bg-white/5 backdrop-blur-2xl border-white/10 rounded-3xl p-8 shadow-2xl">
+        <div className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 shadow-2xl">
           <div className="mb-4">
             <label className="block text-sm mb-2 text-slate-300">Nome da Oficina</label>
-            <input type="text" value={nomeOficina} onChange={(e)=>setNomeOficina(e.target.value)} className="w-full bg-slate-900/50 border-slate-700 rounded-xl p-3 focus:border-emerald-500 outline-none"/>
+            <input type="text" value={nomeOficina} onChange={(e)=>setNomeOficina(e.target.value)} className="w-full bg-slate-900/50 border border-slate-700 rounded-xl p-3 focus:border-emerald-500 outline-none"/>
           </div>
 
           <div className="grid grid-cols-2 gap-4 mb-4">
@@ -68,7 +65,7 @@ export default function DeclaracaoRenda() {
             </div>
             <div>
               <label className="block text-sm mb-2 text-slate-300">Ano</label>
-              <input type="text" value={ano} onChange={(e)=>setAno(e.target.value)} className="w-full bg-slate-900/50 border border-slate-700 rounded-xl p-3"/>
+              <input type="text" value={ano} onChange={(e)=>setAno(e.target.value)} className="w-full bg-slate-900/50 border-slate-700 rounded-xl p-3"/>
             </div>
           </div>
 
