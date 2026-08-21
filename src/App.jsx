@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import DeclaracaoRenda from './DeclaracaoRenda'
+import DeclaracaoRenda from '../DeclaracaoRenda'
 import Orcamentos from './Orcamentos'
 
 export default function App() {
