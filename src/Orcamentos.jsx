@@ -1,22 +1,3 @@
-Vou juntar tudo numa aba só, como você já tem. O que muda no `Orcamentos.jsx`:
-
-- Mantive **igual** o que já funciona: cliente, veículo, itens com foto e total geral.
-- Entrou o **nome da loja** vindo do Perfil que você acabou de criar.
-- Entraram os **3 modelos rápidos** (polimento, martelinho, pintura localizada) — toca e já preenche serviço e valor, você edita se quiser.
-- Entrou o botão **Enviar no WhatsApp**, que monta a mensagem com todos os itens e o total.
-- Entrou o **salvamento no Banco** (cada orçamento enviado fica guardado no aparelho). As fotos não são salvas, só o texto — foto não cabe nessa memória do celular.
-
-Como fazer:
-
-1. Abra `src` → toque em **Orcamentos.jsx**.
-2. Toque no **lápis** (Edit this file).
-3. Segure dentro do código → **Selecionar tudo** → apague.
-4. Cole o bloco abaixo inteiro.
-5. **Commit changes...** → **Commit changes**.
-
-Depois me diga se ficou ✓ verde.
-
-```
 import { useState } from 'react'
 
 const MODELOS = [
@@ -163,4 +144,3 @@ export default function Orcamentos() {
     </div>
   )
 }
-```
